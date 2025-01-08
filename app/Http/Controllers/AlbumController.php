@@ -20,6 +20,7 @@ class AlbumController extends Controller
 
     public function show(Album $album)
     {
+        $album = Album::findOrFail($album->id);
         return view('albums.show', compact('album'));
     }
 
@@ -44,13 +45,13 @@ class AlbumController extends Controller
         $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
         // Upload image to 'public/images'
-        $path = $request->file('cover_image')->storeAs('public/images', $fileNameToStore);
+        $path = $request->file('cover_image')->storeAs ('public/album_covers', $fileNameToStore);
 
         // Create album
         $album = new Album;
         $album->name = $request->input('name');
         $album->description = $request->input('description');
-        $album->cover_image = 'images/' . $fileNameToStore; // Save path relative to 'storage/app/public'
+        $album->cover_image = $fileNameToStore; 
         $album->save();
 
         return redirect('/albums')->with('success', 'Album created');

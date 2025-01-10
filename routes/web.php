@@ -21,3 +21,10 @@ Route::get('/photo/upload/{album_id}', [PhotosController::class, 'create'])->nam
 Route::post('/photo/upload', [PhotosController::class, 'store'])->name('photos.store');
 Route::get('/photo/{photo}', [PhotosController::class, 'show'])->name('photos.show');
 Route::delete('/photo/{id}', [PhotosController::class, 'destroy'])->name('photos.destroy');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

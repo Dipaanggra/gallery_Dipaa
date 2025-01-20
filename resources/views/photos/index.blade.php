@@ -11,7 +11,7 @@
                     alt="Album Image">
                 <div class="card-body">
                     <h5 class="text-xl font-bold">{{ $photo->name }}</h5>
-                    <p class="mb-6">{{ $photo->description }}</p>
+                    <p class="mt-4 mb-6">{{ $photo->description }}</p>
                     <a href="{{ route('albums.show', $photo->id) }}"
                         class="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg">View</a>
                 </div>

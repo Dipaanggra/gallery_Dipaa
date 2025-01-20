@@ -6,7 +6,7 @@
     </x-slot>
     <div class="mx-auto max-w-7xl">
 
-        <a href="/photo" class="px-4 py-2 m-2 text-white bg-gray-500 rounded hover:bg-gray-600">Back</a>
+        <a href="/photo" class="px-4 py-3 m-2 text-white bg-gray-500 rounded hover:bg-gray-600">Back</a>
         <form action="{{ route('photos.destroy', $photo->id) }}" method="post" class="inline-block">
             @csrf
             @method('delete')

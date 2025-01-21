@@ -15,4 +15,9 @@ class Photo extends Model
     {
         return $this->belongsTo(Album::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

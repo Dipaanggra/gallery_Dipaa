@@ -31,7 +31,8 @@ class PhotosController extends Controller
         $extension = $request->file('photo')->getClientOriginalExtension();
 
         // Filename to store
-        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+        $fileNameToStore = preg_replace('/[^A-Za-z0-9_\-]/', '', $filename) . '_' . time() . '.' . $extension;
+
 
         // Upload image
         $path = $request->file('photo')->storeAs('albums/' . $request->input('album_id'), $fileNameToStore, 'public');

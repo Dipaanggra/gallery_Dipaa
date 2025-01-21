@@ -1,17 +1,15 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,6 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/photo/upload', [PhotosController::class, 'store'])->name('photos.store');
     Route::get('/photo/{photo}', [PhotosController::class, 'show'])->name('photos.show');
     Route::delete('/photo/{photo}', [PhotosController::class, 'destroy'])->name('photos.destroy');
+
+    Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+    Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
 
 require __DIR__.'/auth.php';

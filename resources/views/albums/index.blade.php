@@ -15,8 +15,8 @@
                 <img src="{{ Storage::url('images/' . $album->cover_image) }}" height="200px" class="rounded"
                     alt="Album Image">
                 <div class="card-body">
-                    <h5 class="text-xl font-bold">{{ $album->name }}</h5>
-                    <p class="mb-6">{{ $album->description }}</p>
+                    <h5 class="mt-4 text-xl font-bold">{{ $album->name }}</h5>
+                    <p class="mt-2 mb-6">{{ $album->description }}</p>
                     <a href="{{ route('albums.show', $album->id) }}"
                         class="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg">View</a>
                 </div>

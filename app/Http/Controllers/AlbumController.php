@@ -42,7 +42,7 @@ class AlbumController extends Controller
         $extension = $request->file('cover_image')->getClientOriginalExtension();
 
         // Filename to store
-        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+        $fileNameToStore = preg_replace('/[^A-Za-z0-9_\-]/', '', $filename) . '_' . time() . '.' . $extension;
 
         // Upload image to 'public/images'
         $path = $request->file('cover_image')->storeAs('images', $fileNameToStore, 'public');
@@ -51,7 +51,7 @@ class AlbumController extends Controller
         $album = new Album;
         $album->name = $request->input('name');
         $album->description = $request->input('description');
-        $album->cover_image = $fileNameToStore; 
+        $album->cover_image = $fileNameToStore;
         $album->save();
 
         return redirect('/albums')->with('success', 'Album created');

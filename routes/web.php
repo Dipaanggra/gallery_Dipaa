@@ -2,13 +2,15 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['images' => \App\Models\Photo::take(10)->get()]);
 });
 
 Route::middleware('auth')->group(function () {
@@ -30,6 +32,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
     Route::delete('/comment/{comment}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+    Route::post('/like', [LikeController::class, 'store'])->name('like.store');
+    Route::delete('/like/{like}', [LikeController::class, 'destroy'])->name('like.destroy');
 });
 
 require __DIR__.'/auth.php';

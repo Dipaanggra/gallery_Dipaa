@@ -20,21 +20,37 @@
 
     <!-- Navigation Bar -->
     <nav class="flex items-center justify-between px-6 py-4 bg-white shadow">
-        <x-application-logo class="h-9" />
-        <ul class="flex space-x-4">
-            <li>
-                <a href="/login" class="p-2 font-semibold text-white transition bg-teal-400 rounded-lg hover:bg-teal-500">Login</a>
-            </li>
-            <li>
-                <a href="/register" class="font-semibold text-gray-700 transition hover:underline hover:text-gray-900">Register</a>
-            </li>
-        </ul>
+        <a href="/albums">
+            <x-application-logo class="h-9" />
+        </a>
+        @auth
+        @else
+            <ul class="flex space-x-4">
+                <li>
+                    <a href="/login"
+                        class="p-2 font-semibold text-white transition bg-teal-400 rounded-lg hover:bg-teal-500">Login</a>
+                </li>
+                <li>
+                    <a href="/register"
+                        class="font-semibold text-gray-700 transition hover:underline hover:text-gray-900">Register</a>
+                </li>
+            </ul>
+        @endauth
     </nav>
 
     <!-- Main Content -->
     <div class="container mx-auto mt-20 text-center">
         <h1 class="text-4xl font-bold">Welcome to Our Gallery</h1>
         <p class="mt-3 text-gray-600">Explore the collection of beautiful images.</p>
+    </div>
+
+    <div class="gap-4 mx-auto my-6 space-y-4 columns-5 max-w-7xl sm:px-6 lg:px-8">
+        @foreach ($images as $i)
+            <div class="relative">
+                <a href="/photo" class="absolute inset-1"></a>
+                <img class="rounded-lg" src="/storage/albums/{{ $i->album_id }}/{{ $i->photo }}" alt="">
+            </div>
+        @endforeach
     </div>
 
 </body>

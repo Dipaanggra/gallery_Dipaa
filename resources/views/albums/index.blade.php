@@ -9,14 +9,14 @@
                 Album</a>
         </div>
     </x-slot>
-    <div class="grid grid-cols-4 gap-4 mx-auto my-6 max-w-7xl sm:px-6 lg:px-8">
+    <div class="grid gap-4 mx-auto my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl sm:px-6 lg:px-8">
         @foreach ($albums as $album)
             <div class="p-4 bg-white rounded-lg shadow-lg">
                 <img src="{{ Storage::url('images/' . $album->cover_image) }}" height="200px" class="rounded"
                     alt="Album Image">
                 <div class="card-body">
                     <h5 class="mt-4 text-xl font-bold">{{ $album->name }}</h5>
-                    <p class="mt-2 mb-6">{{ $album->description }}</p>
+                    <p class="mt-2 mb-6 line-clamp-2">{{ $album->description }}</p>
                     <a href="{{ route('albums.show', $album->id) }}"
                         class="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg">View</a>
                 </div>

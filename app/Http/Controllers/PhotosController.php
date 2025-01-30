@@ -51,8 +51,19 @@ class PhotosController extends Controller
 
     public function show(Photo $photo)
     {
+        if (auth()->check()) {
+            $liked = auth()->user()->likes->contains('photo_id', $photo->id);
+        } else {
+            $liked = false;
+        }
+        if ($liked) {
+            $action = route('like.destroy', $photo->likes->where('user_id', auth()->id())->first());
+        } else {
+            $action = route('like.store');
+        }
         $photo = Photo::findOrFail($photo->id);
-        return view('photos.show', compact('photo'));
+        $like_count = $photo->likes->count();
+        return view('photos.show', compact('photo', 'liked', 'action', 'like_count'));
     }
 
     public function destroy($id)

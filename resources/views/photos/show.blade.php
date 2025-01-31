@@ -28,7 +28,7 @@
                         {{ $like_count }}
                     </span>
                 </form>
-                <form action="{{ route('photos.destroy', $photo) }}" method="POST">
+                {{-- <form action="{{ route('photos.destroy', $photo) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button>
@@ -42,7 +42,7 @@
                             <line x1="14" x2="14" y1="11" y2="17" />
                         </svg>
                     </button>
-                </form>
+                </form> --}}
             </div>
             <div class="">
                 <p class="text-xl font-semibold">{{ $photo->title }}</p>

@@ -66,16 +66,16 @@ class PhotosController extends Controller
         return view('photos.show', compact('photo', 'liked', 'action', 'like_count'));
     }
 
-    public function destroy($id)
-    {
-        $photo = Photo::findOrFail($id);
-        $photo->delete();
-        return redirect('/albums/' . $photo->album_id)->with('success', 'Photo deleted');
-    }
+    // public function destroy($id)
+    // {
+    //     $photo = Photo::findOrFail($id);
+    //     $photo->delete();
+    //     return redirect('/albums/' . $photo->album_id)->with('success', 'Photo deleted');
+    // }
 
-    public function index()
-    {
-        $photos = Photo::all();
-        return view('photos.index', compact('photos'));
-    }
+    // public function index()
+    // {
+    //     $photos = Photo::all();
+    //     return view('photos.index', compact('photos'));
+    // }
 }

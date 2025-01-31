@@ -31,12 +31,15 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
         @if (session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                window.toast("{{ addslashes(session('success')) }}", { type: 'success', position: 'top-center' });
-            });
-        </script>
-    @endif
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    window.toast("{{ addslashes(session('success')) }}", {
+                        type: 'success',
+                        position: 'top-center'
+                    });
+                });
+            </script>
+        @endif
 
 
         <x-toast />

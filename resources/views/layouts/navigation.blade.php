@@ -6,7 +6,11 @@
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('albums.index') }}">
-                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
+                        <div class="flex items-center gap-2">
+
+                            <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
+                            <span class="text-2xl font-black text-gray-800">Gallery Mu</span>
+                        </div>
                     </a>
                 </div>
 

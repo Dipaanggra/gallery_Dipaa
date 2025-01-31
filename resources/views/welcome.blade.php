@@ -21,7 +21,10 @@
     <!-- Navigation Bar -->
     <nav class="flex items-center justify-between px-6 py-4 bg-white shadow">
         <a href="/albums">
-            <x-application-logo class="h-9" />
+            <div class="flex items-center gap-2">
+                <x-application-logo class="block w-auto text-gray-800 fill-current h-9" />
+                <span class="text-2xl font-black text-gray-800">Gallery Mu</span>
+            </div>
         </a>
         @auth
         @else

@@ -2,8 +2,12 @@
     <div class="relative grid max-w-4xl gap-4 p-2 m-4 mx-auto bg-white border shadow-md sm:grid-cols-2 rounded-3xl">
         <img src="/storage/albums/{{ $photo->album_id }}/{{ $photo->photo }}" alt="KUCENG" class="rounded-2xl">
         <div class="flex flex-col pt-2 pr-2">
-            <div class="flex justify-between">
-                <form action="{{ $action }}" method="POST" class="flex flex-col items-center">
+            <div class="">
+                <p class="text-xl font-semibold">{{ $photo->title }}</p>
+                <p class="text-sm">{{ $photo->description }}</p>
+            </div>
+            <div class="flex items-center gap-4 mt-4">
+                <form action="{{ $action }}" method="POST" class="flex items-center gap-2">
                     @csrf
                     @method($liked ? 'DELETE' : 'POST')
                     <input type="hidden" name="photo_id" value="{{ $photo->id }}">
@@ -28,6 +32,16 @@
                         {{ $like_count }}
                     </span>
                 </form>
+                <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-message-circle">
+                        <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                    </svg>
+                    <span class="text-xs">
+                        {{ $photo->comments->count() }}
+                    </span>
+                </div>
                 {{-- <form action="{{ route('photos.destroy', $photo) }}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -43,10 +57,6 @@
                         </svg>
                     </button>
                 </form> --}}
-            </div>
-            <div class="">
-                <p class="text-xl font-semibold">{{ $photo->title }}</p>
-                <p class="text-sm">{{ $photo->description }}</p>
             </div>
             <div class="mt-3 mb-2 overflow-y-auto">
                 <label for="comment" class="text-base font-medium ">Comment ({{ $photo->comments->count() }})</label>
@@ -68,7 +78,7 @@
                     @method('POST')
                     <input type="hidden" name="photo_id" value="{{ $photo->id }}">
                     <textarea name="comment" id="comment" placeholder="Comment here"
-                        class="flex-1 px-4 py-2 border-2 border-teal-200 focus:border-teal-300 focus:ring-teal-300 rounded-3xl"
+                        class="flex-1 px-4 py-2 border-2 border-blue-200 focus:border-blue-300 focus:ring-blue-300 rounded-3xl"
                         style="field-sizing: content"></textarea>
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24" fill="none"

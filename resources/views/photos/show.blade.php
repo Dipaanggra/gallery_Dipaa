@@ -1,7 +1,35 @@
 <x-app-layout>
     <div class="relative grid max-w-4xl gap-4 p-2 m-4 mx-auto bg-white border shadow-md sm:grid-cols-2 rounded-3xl">
-        <img src="/storage/albums/{{ $photo->album_id }}/{{ $photo->photo }}" alt="KUCENG" class="rounded-2xl">
+        <img src="/storage/albums/{{ $photo->album_id }}/{{ $photo->photo }}" alt="photo" class="rounded-2xl">
         <div class="flex flex-col pt-2 pr-2">
+            <div class="flex justify-end">
+                <form action="{{ route('photos.destroy', $photo) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="p-2 rounded-full hover:bg-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-trash-2">
+                            <path d="M3 6h18" />
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                            <line x1="10" x2="10" y1="11" y2="17" />
+                            <line x1="14" x2="14" y1="11" y2="17" />
+                        </svg>
+                    </button>
+                </form>
+                <a href="{{ route('photos.edit', $photo) }}">
+                    <button class="p-2 rounded-full hover:bg-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-pencil">
+                            <path
+                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                            <path d="m15 5 4 4" />
+                        </svg>
+                    </button>
+                </a>
+            </div>
             <div class="">
                 <p class="text-xl font-semibold">{{ $photo->title }}</p>
                 <p class="text-sm">{{ $photo->description }}</p>
@@ -42,24 +70,8 @@
                         {{ $photo->comments->count() }}
                     </span>
                 </div>
-                {{-- <form action="{{ route('photos.destroy', $photo) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="lucide lucide-trash-2">
-                            <path d="M3 6h18" />
-                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                            <line x1="10" x2="10" y1="11" y2="17" />
-                            <line x1="14" x2="14" y1="11" y2="17" />
-                        </svg>
-                    </button>
-                </form> --}}
             </div>
             <div class="mt-3 mb-2 overflow-y-auto">
-                <label for="comment" class="text-base font-medium ">Comment ({{ $photo->comments->count() }})</label>
                 @foreach ($photo->comments as $comment)
                     <div class="flex flex-col">
                         <div class="flex">
@@ -78,7 +90,7 @@
                     @method('POST')
                     <input type="hidden" name="photo_id" value="{{ $photo->id }}">
                     <textarea name="comment" id="comment" placeholder="Comment here"
-                        class="flex-1 px-4 py-2 border-2 border-blue-200 focus:border-blue-300 focus:ring-blue-300 rounded-3xl"
+                        class="flex-1 px-4 py-2 border-2 border-gray-300 focus:border-blue-500 focus:ring-blue-600 rounded-3xl"
                         style="field-sizing: content"></textarea>
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24" fill="none"
@@ -92,10 +104,10 @@
                 </form>
             </div>
         </div>
-        <a href="/photo" class="absolute p-2 transition-colors rounded-full -left-12 hover:bg-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-arrow-left">
+        <a href="/photo" class="absolute p-2 transition-colors rounded-full -left-12 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="lucide lucide-arrow-left">
                 <path d="m12 19-7-7 7-7" />
                 <path d="M19 12H5" />
             </svg>

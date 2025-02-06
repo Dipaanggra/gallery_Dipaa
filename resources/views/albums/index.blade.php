@@ -5,8 +5,6 @@
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 {{ __('Albums') }}
             </h2>
-            <a href="{{ route('albums.create') }}" class="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg">Create
-                Album</a>
         </div>
     </x-slot>
     <div class="grid gap-4 mx-auto my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl sm:px-6 lg:px-8">
@@ -18,7 +16,7 @@
                     <h5 class="mt-4 text-xl font-bold">{{ $album->name }}</h5>
                     <p class="mt-2 mb-6 line-clamp-2">{{ $album->description }}</p>
                     <a href="{{ route('albums.show', $album->id) }}"
-                        class="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg">View</a>
+                        class="px-4 py-2 font-bold text-white bg-yellow-400 rounded-lg hover:bg-yellow-500">View</a>
                 </div>
             </div>
         @endforeach

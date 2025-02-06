@@ -11,9 +11,9 @@
             @csrf
             @method('post')
 
-            <!-- Input Title -->
+            <!-- Input name -->
             <div>
-                <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+                <label for="title" class="block text-sm font-medium text-gray-700">Name</label>
                 <input type="text" name="title" id="title" placeholder="Photo title"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
             </div>
@@ -21,7 +21,7 @@
             <!-- Input Description -->
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                <input type="text" name="description" id="description"
+                <input type="text" name="description" id="description" placeholder="Photo description"
                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
             </div>
 
